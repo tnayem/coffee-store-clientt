@@ -1,9 +1,10 @@
 import React from 'react';
+import AddCoffee from './AddCoffee';
 
 const Home = () => {
     return (
         <div>
-This is Home
+            <AddCoffee></AddCoffee>
         </div>
     );
 };
