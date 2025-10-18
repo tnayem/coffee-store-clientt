@@ -4,6 +4,26 @@ import { Link } from 'react-router';
 const AddCoffee = () => {
     const handleCoffeeSubmit=(e)=>{
         e.preventDefault()
+        const coffeeName = e.target.coffeeName.value;
+        const chef = e.target.chef.value;
+        const supplier = e.target.supplier.value;
+        const taste = e.target.taste.value;
+        const category = e.target.category.value;
+        const details = e.target.details.value;
+        const Photo = e.target.Photo.value;
+        const coffeeInfo ={coffeeName,chef,supplier,taste,category,details,Photo}
+        fetch('http://localhost:3000/coffees',{
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(coffeeInfo)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+        })
+
     }
     return (
         <div className='bg-base-200'>
