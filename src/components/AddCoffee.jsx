@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
+import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
-    const handleCoffeeSubmit=(e)=>{
+    const handleCoffeeSubmit = (e) => {
         e.preventDefault()
         const coffeeName = e.target.coffeeName.value;
         const chef = e.target.chef.value;
@@ -11,18 +12,23 @@ const AddCoffee = () => {
         const category = e.target.category.value;
         const details = e.target.details.value;
         const Photo = e.target.Photo.value;
-        const coffeeInfo ={coffeeName,chef,supplier,taste,category,details,Photo}
-        fetch('http://localhost:3000/coffees',{
+        const coffeeInfo = { coffeeName, chef, supplier, taste, category, details, Photo }
+        fetch('http://localhost:3000/coffees', {
             method: 'POST',
-            headers:{
+            headers: {
                 'Content-Type': 'application/json',
             },
-            body:JSON.stringify(coffeeInfo)
+            body: JSON.stringify(coffeeInfo)
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data);
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Swal.fire({
+                    title: "Add Coffee Successfully",
+                    icon: "success",
+                    draggable: true
+                });
+            })
 
     }
     return (
