@@ -10,7 +10,7 @@ const SignUp = () => {
         const password = e.target.password.value
         const name = e.target.name.value
         const phone = e.target.phone.value
-        const userInfo = { name, phone }
+        const userInfo = { email, name, phone }
         console.log(userInfo);
         createUser(email, password)
             .then(result => {
